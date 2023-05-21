@@ -1,4 +1,4 @@
-package me.jaron.jframe;  // Package declaration
+package me.jaron.jframe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,5 +66,22 @@ public class Board extends JFrame {
         }
     }
 
+    public void setActive(int x, int y) {
+        if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length) {
+            grid[x][y] = true;
+            repaint();  // Repaint the panel to reflect the changes
+        }
+    }
 
+    public void setInactive(int x, int y) {
+        if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length) {
+            grid[x][y] = false;
+            repaint();  // Repaint the panel to reflect the changes
+        }
+    }
+
+
+    public boolean[][] getGrid() {
+        return grid;
+    }
 }

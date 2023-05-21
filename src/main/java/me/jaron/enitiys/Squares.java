@@ -7,7 +7,7 @@ public class Squares {
     private boolean on;
     private int type = 0; // 1,2,3 // 0 means off
     private Color color;
-    private double spreadChance;
+    private double spreadChance = 0.1;
     private int lifeTime = 100;
     private double age = 0;
 
@@ -15,17 +15,19 @@ public class Squares {
         this.on = false;
     }
 
-    public void changeColor(int x, int y) {
+    public void changeColor(int x, int y, Color color) {
         if (on) {
             Random random = new Random();
             if (random.nextDouble() < 0.5) {
-                color = Color.WHITE;
+                this.color = color;
+                on = false;  // Set on to false for this square
             } else {
-                color = Color.BLACK;
+                this.color = color;
+                on = true;  // Set on to true for this square
             }
             System.out.println("Square " + x + "," + y + " has changed to " + on);
         } else {
-            color = null;
+            this.color = null;
         }
     }
 
@@ -44,6 +46,10 @@ public class Squares {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public boolean isOn() {
+        return on;
     }
 
     public void setOn(boolean on) {
